@@ -1,14 +1,14 @@
 # See the README file for how to use the golf module
 
-import random
+for i in range(3):
 
-from Golf import Golf
+	from Golf import Golf
+	import random
 
-golf = Golf()
+	golf = Golf()
 
+	distance = random.randint(100, 650)
 
-def golfGame(distance):
-	
 	golf.drawHole(distance)
 
 	if distance >= 100 and distance <= 250:
@@ -36,6 +36,7 @@ def golfGame(distance):
 			iron = "2"
 			driver = "3"
 
+			print()
 			print(wedge + ") Wedge")
 			print(iron + ") Iron")
 			print(driver + ") Driver")
@@ -100,13 +101,4 @@ def golfGame(distance):
 	print()
 
 	golf.clearScreen()
-
-
-d1 = random.randint(100, 650)
-d2 = random.randint(100, 650)
-d3 = random.randint(100, 650)
-
-for i in range(d1, d2, d3):
-	golfGame(d1)
-	golfGame(d2)
-	golfGame(d3)
+	
