@@ -1,13 +1,13 @@
 # See the README file for how to use the golf module
 
-from Golf import Golf
 import random
+
+from Golf import Golf
 
 golf = Golf()
 
 
 def golfGame(distance):
-
     golf.drawHole(distance)
 
     if distance >= 100 and distance <= 250:
