@@ -1,13 +1,11 @@
+import math
+import turtle
 from turtle import Screen
 
-import math
-import random
-import turtle
 
-
-#Golf module to import
+# Golf module to import
 class Golf:
-    #Change this height if the window is not fitting properly
+    # Change this height if the window is not fitting properly
     WIDTH, HEIGHT = 690, 350
     screen = Screen()
     screen.setup(WIDTH, HEIGHT)
@@ -17,7 +15,7 @@ class Golf:
     G = 9.80665
     t = turtle.Turtle()
 
-    #initialiation function, set turtle origin to bottom of screen
+    # initialiation function, set turtle origin to bottom of screen
     def __init__(self):
         self.screen.tracer(0)
         self.t.hideturtle()
@@ -28,13 +26,13 @@ class Golf:
         self.t.left(45)
         self.t.showturtle()
 
-    #Clear Screen
+    # Clear Screen
     def clearScreen(self):
         self.t.clear()
 
-    #Draw text function, optional x,y coordinates
+    # Draw text function, optional x,y coordinates
     def drawText(self, text, x=0, y=330):
-        #self.t.hideturtle()
+        # self.t.hideturtle()
         self.origin_x = x
         self.origin_y = y
         self.t.penup()
@@ -46,7 +44,7 @@ class Golf:
         self.t.penup()
         self.t.goto(self.origin_x, self.origin_y)
 
-    #Draw golf hole
+    # Draw golf hole
     def drawHole(self, distance):
         self.origin_x = 0
         self.origin_y = 0
@@ -89,10 +87,10 @@ class Golf:
         self.t.penup()
         self.t.goto(self.origin_x, self.origin_y)
 
-    #Shoot ball function, optional angle parameter
-    #returns distance shot
-    def shootBall(self, power, angle=45):
-        #Reverse ball direction if power is negative
+    # Shoot ball function, optional angle parameter
+    # returns distance shot
+    def shootBall(self, power: object, angle: object = 45) -> object:
+        # Reverse ball direction if power is negative
         if power >= 0:
             negative = 1
         elif power < 0:
@@ -111,18 +109,18 @@ class Golf:
         x = 0
         time = 0
         distance = 0
-        #Parabolic arc
+        # Parabolic arc
         while y >= 0:
             time += .01
             x = negative * power * math.cos(
                 math.radians(angle)) * time + self.origin_x
             y = power * math.sin(math.radians(angle)) * time - ((
-                (time**2) * self.G) / 2) + self.origin_y
+                                                                        (time ** 2) * self.G) / 2) + self.origin_y
             self.t.goto(
                 negative * power * math.cos(math.radians(angle)) * time +
                 self.origin_x,
                 power * math.sin(math.radians(angle)) * time -
-                (((time**2) * self.G) / 2) + self.origin_y)
+                (((time ** 2) * self.G) / 2) + self.origin_y)
         self.t.stamp()
         distance = x - self.origin_x
         self.origin_x = x
